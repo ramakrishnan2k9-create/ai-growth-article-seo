@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Is Dead. Long Live SEO. | The Complete 2026 Reckoning</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d0e11;
+  --paper: #f5f2ec;
+  --paper2: #ede9e1;
+  --accent: #c8390f;
+  --accent2: #1a3cff;
+  --accent3: #00875a;
+  --gold: #d4a017;
+  --muted: #7a7670;
+  --border: #d8d3c9;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'Fira Code', monospace;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS INDICATOR ── */
+#read-progress {
+  position: fixed; top:0; left:0; height:3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index:999; width:0%; transition: width .1s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top:0; z-index:100;
+  background: rgba(245,242,236,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 5%;
+  display: flex; align-items:center; justify-content:space-between;
+}
+.nav-left {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing:.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.nav-left strong { color: var(--ink); }
+.nav-right {
+  display: flex; gap: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing:.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  list-style: none;
+}
+.nav-right a { color:inherit; text-decoration:none; transition: color .2s; }
+.nav-right a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+#hero {
+  position: relative;
+  padding: 80px 5% 60px;
+  border-bottom: 2px solid var(--ink);
+  overflow: hidden;
+}
+
+.hero-overline {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: flex; align-items:center; gap:12px;
+}
+.hero-overline::before {
+  content:'';
+  display:block; width:32px; height:2px;
+  background: var(--accent);
+}
+
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -.03em;
+  margin-bottom: 28px;
+  max-width: 820px;
+}
+.hero-h1 .accent-word {
+  color: var(--accent);
+  font-style: italic;
+}
+.hero-h1 .second-line {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: .65em;
+  margin-top: 8px;
+  letter-spacing: .01em;
+}
+
+.hero-deck {
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 400;
+  color: var(--ink);
+  max-width: 640px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+}
+
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap:wrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.hero-meta .author { color: var(--ink); font-weight:600; }
+
+.hero-stat-strip {
+  position: absolute;
+  right: 5%; top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  width: 260px;
+  border: 1px solid var(--border);
+  background: var(--paper2);
+  padding: 20px;
+}
+.hero-stat {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.hero-stat:last-child { border-bottom:none; }
+.hero-stat-num {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media(max-width:900px) { .hero-stat-strip { display:none; } }
+
+/* ── CONTENT LAYOUT ── */
+.article-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
+  align-items: start;
+}
+@media(max-width:900px){
+  .article-body { grid-template-columns:1fr; }
+  .sidebar { display:none; }
+}
+
+.main-content { padding: 60px 0; }
+.sidebar {
+  padding: 60px 0;
+  position: sticky;
+  top: 80px;
+}
+
+/* ── TYPOGRAPHY ── */
+.lead {
+  font-size: clamp(19px, 2vw, 24px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.lead strong { color: var(--accent); font-style: italic; }
+
+p {
+  margin-bottom: 24px;
+  color: #2a2825;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  margin: 64px 0 20px;
+  padding-top: 40px;
+  border-top: 2px solid var(--ink);
+}
+h2 em { color: var(--accent); font-style: italic; }
+
+h3 {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 36px 0 14px;
+}
+
+h4 {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 32px 0 10px;
+}
+
+/* ── PULLQUOTE ── */
+.pullquote {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ink);
+  padding: 32px 0 32px 32px;
+  border-left: 5px solid var(--accent);
+  margin: 40px 0;
+}
+.pullquote cite {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+/* ── DATA CALLOUT ── */
+.data-callout {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 32px 36px;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+.data-callout::before {
+  content: '"';
+  font-family: var(--serif);
+  font-size: 200px;
+  color: rgba(255,255,255,.04);
+  position: absolute;
+  top: -40px; left: 10px;
+  line-height: 1;
+  pointer-events: none;
+}
+.data-callout .stat-big {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.data-callout .stat-text {
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.5;
+  color: rgba(245,242,236,.85);
+  max-width: 500px;
+}
+.data-callout .stat-source {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(245,242,236,.35);
+  margin-top: 14px;
+}
+
+/* ── COMPARISON GRID ── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 40px 0;
+  border: 1px solid var(--border);
+}
+@media(max-width:600px) { .compare-grid { grid-template-columns:1fr; } }
+
+.compare-col {
+  padding: 28px 28px;
+}
+.compare-col:first-child {
+  border-right: 1px solid var(--border);
+  background: var(--paper2);
+}
+.compare-col-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  display: inline-block;
+}
+.label-pre { background: #fde8e3; color: var(--accent); }
+.label-post { background: #e3eafe; color: var(--accent2); }
+
+.compare-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3a3835;
+}
+.compare-item .dot {
+  width: 6px; height:6px;
+  border-radius: 50%;
+  flex-shrink:0;
+  margin-top: 8px;
+}
+.dot-red { background: var(--accent); }
+.dot-blue { background: var(--accent2); }
+
+/* ── EVOLUTION TIMELINE ── */
+.timeline {
+  position: relative;
+  margin: 48px 0;
+  padding-left: 32px;
+}
+.timeline::before {
+  content:'';
+  position:absolute; left:0; top:8px; bottom:8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 36px;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.timeline-item.visible { opacity:1; transform:translateX(0); }
+.timeline-item::before {
+  content:'';
+  position: absolute;
+  left: -39px; top: 8px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 2px currentColor;
+}
+.tl-year {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .15em;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.tl-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.tl-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.era-seo { color: var(--accent); }
+.era-pre-ai { color: #c47a1a; }
+.era-ai { color: var(--accent2); }
+.era-agentic { color: var(--accent3); }
+
+/* ── AUDIT CHECKLIST ── */
+.audit-section {
+  border: 1px solid var(--border);
+  margin: 40px 0;
+  overflow: hidden;
+}
+.audit-header {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 16px 24px;
+  display: flex; align-items:center; justify-content:space-between;
+}
+.audit-header-title {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.audit-header-era {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: rgba(245,242,236,.4);
+}
+.audit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.audit-row:last-child { border-bottom:none; }
+.audit-cell {
+  padding: 14px 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  display:flex; align-items:flex-start; gap:10px;
+}
+.audit-cell:first-child { border-right: 1px solid var(--border); background:var(--paper2); }
+.audit-cell .tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .15em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink:0;
+  margin-top: 3px;
+}
+.tag-was { background: #fde8e3; color: var(--accent); }
+.tag-now { background: #e3f5eb; color: var(--accent3); }
+
+/* ── STAT GRID ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 40px 0;
+}
+.stat-cell {
+  background: var(--paper);
+  padding: 24px 20px;
+  text-align: center;
+}
+.stat-cell-num {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-cell-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.stat-cell-source {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--border);
+  margin-top: 6px;
+}
+.c-red { color: var(--accent); }
+.c-blue { color: var(--accent2); }
+.c-green { color: var(--accent3); }
+.c-gold { color: var(--gold); }
+
+/* ── FRAMEWORK TABLE ── */
+.framework-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 14px;
+}
+.framework-table th {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: left;
+}
+.framework-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.framework-table tr:nth-child(even) td { background: var(--paper2); }
+.framework-table .pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+.pill-dead { background:#fde8e3; color:var(--accent); }
+.pill-evolved { background:#fff4cc; color:#a07800; }
+.pill-new { background:#e3eafe; color:var(--accent2); }
+.pill-critical { background:#e3f5eb; color:var(--accent3); }
+
+/* ── SIDEBAR ── */
+.sidebar-toc {
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin-bottom: 28px;
+}
+.sidebar-toc-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.toc-item {
+  font-size: 13px;
+  margin-bottom: 8px;
+  display:flex; align-items:flex-start; gap:8px;
+  color: var(--muted);
+  transition: color .2s;
+}
+.toc-item a { color: inherit; text-decoration:none; }
+.toc-item:hover { color: var(--accent); }
+.toc-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  flex-shrink:0;
+  margin-top: 2px;
+}
+
+.sidebar-fact {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.sidebar-fact-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.sidebar-fact-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.sidebar-fact-source {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: rgba(245,242,236,.35);
+  margin-top: 10px;
+  letter-spacing: .1em;
+}
+
+.sidebar-glossary { border: 1px solid var(--border); padding:20px; }
+.glossary-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.glossary-term {
+  margin-bottom: 14px;
+}
+.glossary-term dt {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+.glossary-term dd {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CONCLUSION ── */
+.conclusion-box {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 52px 48px;
+  margin: 60px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.conclusion-box::after {
+  content: '2026';
+  font-family: var(--serif);
+  font-size: 200px;
+  font-weight: 900;
+  color: rgba(255,255,255,.03);
+  position: absolute;
+  right: -20px; bottom:-40px;
+  line-height: 1;
+  pointer-events: none;
+}
+.conclusion-box h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900;
+  color: var(--paper);
+  border-top: 2px solid rgba(245,242,236,.15);
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.conclusion-box h2 em { color: var(--accent); }
+.conclusion-box p { color: rgba(245,242,236,.75); }
+.conclusion-box .framework-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+@media(max-width:600px){ .conclusion-box .framework-list { grid-template-columns:1fr; } }
+.fw-item {
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  background: rgba(255,255,255,.04);
+}
+.fw-item-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.fw-item-text {
+  font-size: 13px;
+  color: rgba(245,242,236,.65);
+  line-height: 1.5;
+}
+
+/* ── AUTHOR BOX ── */
+.author-box {
+  border: 1px solid var(--border);
+  padding: 28px;
+  margin: 48px 0;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.author-avatar {
+  width: 64px; height: 64px;
+  background: var(--ink);
+  display: flex; align-items:center; justify-content:center;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--paper);
+  flex-shrink: 0;
+}
+.author-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.author-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.author-bio {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(245,242,236,.4);
+  padding: 32px 5%;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  display: flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+}
+footer strong { color: var(--paper); }
+
+/* ── UTILS ── */
+.reveal { opacity:0; transform:translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+.tag-inline {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  background: var(--paper2);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 2px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+strong.highlight { color: var(--accent); }
+em.blue { font-style:normal; color: var(--accent2); font-weight:600; }
+em.green { font-style:normal; color: var(--accent3); font-weight:600; }
+
+hr.section-rule {
+  border:none; border-top: 1px solid var(--border);
+  margin: 48px 0;
+}
+
+.note-box {
+  background: #fff8e6;
+  border-left: 4px solid var(--gold);
+  padding: 18px 22px;
+  margin: 32px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4a3a00;
+}
+.note-box strong { color: #7a5a00; }
+</style>
+</head>
+<body>
+<div id="read-progress"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left"><strong>RV Digital Intelligence</strong> · SEO Deep Dives</div>
+  <ul class="nav-right">
+    <li><a href="#era-one">The Origins</a></li>
+    <li><a href="#era-two">Pre-AI SEO</a></li>
+    <li><a href="#era-three">AI Revolution</a></li>
+    <li><a href="#agentic">Agentic Era</a></li>
+    <li><a href="#audit">The New Audit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-overline">Deep Analysis · May 2026 · First Published</div>
+  <h1 class="hero-h1">
+    SEO Is <span class="accent-word">Dead.</span><br>
+    Long Live SEO.
+    <span class="second-line">The complete reckoning — from ten blue links to agentic intelligence</span>
+  </h1>
+
+  <p class="hero-deck">
+    Twenty-six years of search history. One seismic rupture. This is the definitive account of how SEO went from stuffing keywords into meta tags to fighting for citations inside AI-generated answers that most humans never click — and what every marketer, founder, and strategist must do right now to survive the transition.
+  </p>
+
+  <div class="hero-meta">
+    <span class="author">Ramakrishnan Varadaraj</span>
+    <span>AI-Driven Growth Strategist</span>
+    <span>·</span>
+    <span>13 Years in Digital Advertising</span>
+    <span>·</span>
+    <span>11,400 words · 38 min read</span>
+    <span>·</span>
+    <span>Last updated: May 2026</span>
+  </div>
+
+  <!-- Floating stat strip -->
+  <div class="hero-stat-strip">
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);">By The Numbers · 2026</div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">65%</div>
+      <div class="hero-stat-label">Google searches end with zero clicks to any website</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" style="color:var(--accent2)">527%</div>
+      <div class="hero-stat-label">Increase in AI-referred sessions, Jan–May 2025</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" style="color:var(--accent3)">−34.5%</div>
+      <div class="hero-stat-label">CTR loss for #1 rank when AI Overview is present</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" style="color:var(--gold)">14B</div>
+      <div class="hero-stat-label">Daily Google queries vs 37.5M on ChatGPT — ratio 373:1</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="article-body">
+  <main class="main-content">
+
+    <!-- OPENING -->
+    <p class="lead reveal">
+      <strong>Here is what nobody tells you about SEO:</strong> it has never been about search engines. It has always been about the invisible negotiation between <em>what people want to know</em> and <em>who gets to tell them.</em> The machinery changes. The negotiation never stops.
+    </p>
+
+    <p class="reveal">In 1998, two Stanford PhD students named Larry Page and Sergey Brin published a paper titled <em>"The Anatomy of a Large-Scale Hypertextual Web Search Engine."</em> In it, they described a system that counted hyperlinks as votes. The page with the most credible votes won. Within five years, an entire industry had grown up around gaming those votes. We called it Search Engine Optimisation. We should have called it what it was: the first great arms race of the information age.</p>
+
+    <p class="reveal">That arms race never ended. It just changed weapons. Keyword stuffing gave way to link buying. Link buying gave way to content farms. Content farms gave way to authority building. Authority building gave way to semantic search. And semantic search — the thing we thought was the final boss — turned out to be the last checkpoint before the real transformation began.</p>
+
+    <p class="reveal">In 2023, Google deployed AI Overviews across its search results. In 2024, ChatGPT became a search engine. In 2025, AI-referred sessions grew by 527%. In 2026, <strong class="highlight">65% of all Google searches end without a single click to any website.</strong> The negotiation is no longer between your page and Google's algorithm. It is between your content and an AI system deciding whether to quote you, cite you, or ignore you entirely.</p>
+
+    <p class="reveal">This is the complete history of that transformation — and the operational blueprint for what comes next.</p>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <h2 id="era-one">Part I: The <em>Archaeology</em> of Search</h2>
+
+    <h4>Era 1 · 1991 — 2003 · The Wild West</h4>
+
+    <p class="reveal">The first website went live on August 6, 1991. By 1994, there were 2,738 websites. By 1999, there were 3.2 million. The problem was obvious: how do you find anything? The first "search engines" — AltaVista, Lycos, Excite, Ask Jeeves — were essentially elaborate directories. They read your page, counted your keywords, and ranked you on how often you mentioned what someone searched for.</p>
+
+    <p class="reveal">The SEO of this era was almost comically simple. Repeat your keyword 47 times. Make the text white on a white background. Stuff keywords in your meta tags. The algorithm had no concept of quality — it was counting, not comprehending. If you typed the keyword more times than your competitor, you won. The internet was a keyword arms race, and the weapons were exclamation marks and repetition.</p>
+
+    <div class="data-callout reveal">
+      <div class="stat-big">100%</div>
+      <div class="stat-text">The proportion of early SEO that was pure mechanical signal manipulation. Keywords counted. Quality did not. Context did not. Intent did not. The algorithm saw text, not meaning.</div>
+      <div class="stat-source">Search history baseline · 1994–2003</div>
+    </div>
+
+    <h4>Era 2 · 2003 — 2011 · The PageRank Empire</h4>
+
+    <p class="reveal">Google's PageRank changed everything. Instead of just reading your page, Google read who linked to it. A link from Harvard was worth more than a link from your cousin's blog. Suddenly, the currency of the web wasn't keywords — it was authority. And authority could be manufactured.</p>
+
+    <p class="reveal">The link-building industry was born overnight. Private Blog Networks. Link farms. Directory submissions. Paid links disguised as editorial content. SEOs built elaborate networks of low-quality sites, each pointing at the one they actually wanted to rank. Google played Whack-a-Mole, and the SEOs always stayed one hit ahead.</p>
+
+    <div class="timeline">
+      <div class="timeline-item" style="--dot-color:var(--accent);">
+        <div class="tl-year era-seo">2003</div>
+        <div class="tl-title">Google Florida Update</div>
+        <div class="tl-desc">First major algorithm penalty targeting keyword stuffing. Wiped out thousands of sites overnight. SEOs learned Google could — and would — rewrite the rules unilaterally.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year era-seo">2004</div>
+        <div class="tl-title">Sitemaps & Meta Tag Standardization</div>
+        <div class="tl-desc">Google formalises the sitemap protocol. The meta description becomes a standard signal. Technical SEO is born as a discipline distinct from content.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year era-seo">2005</div>
+        <div class="tl-title">rel="nofollow" Introduction</div>
+        <div class="tl-desc">Google asks publishers to label paid and untrustworthy links. The SEO community adapts instantly, making nofollow links part of a "natural" link profile strategy.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year era-pre-ai">2008</div>
+        <div class="tl-title">Universal Search Launches</div>
+        <div class="tl-desc">Images, videos, news, and local results enter the SERP. The "ten blue links" era formally ends. Optimising for multiple content types becomes mandatory.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year era-pre-ai">2011</div>
+        <div class="tl-title">Google Panda Update</div>
+        <div class="tl-desc">The most significant single algorithm change of the pre-AI era. Content farms are demolished. Quality — measured by thin content, high ad density, low engagement — becomes a ranking signal for the first time.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <h2 id="era-two">Part II: The <em>Sophistication Era</em> — Pre-AI SEO at Its Peak</h2>
+
+    <h4>2012 — 2022 · The Professional Discipline</h4>
+
+    <p class="reveal">Between 2012 and 2022, SEO matured from a dark art into a professional discipline. Three algorithm updates defined the decade: <strong class="highlight">Penguin</strong> (2012) destroyed link manipulation. <strong class="highlight">Hummingbird</strong> (2013) introduced semantic understanding — Google now read sentences, not just words. <strong class="highlight">RankBrain</strong> (2015) brought machine learning to search ranking for the first time. And <strong class="highlight">BERT</strong> (2019) applied natural language processing to understand context, prepositions, and the relational meaning between words.</p>
+
+    <p class="reveal">By 2020, a good SEO practitioner needed to know: technical site architecture, Core Web Vitals, structured data markup, E-A-T (Expertise, Authority, Trustworthiness), keyword clustering, content briefs, backlink analysis, competitor gap analysis, log file analysis, JavaScript rendering, international hreflang implementation, and at least three analytics platforms. The days of "stuff keywords and build links" were not just over — they felt like ancient history.</p>
+
+    <div class="compare-grid reveal">
+      <div class="compare-col">
+        <div class="compare-col-label label-pre">Traditional SEO Practice · 2012–2022</div>
+        <div class="compare-item"><div class="dot dot-red"></div>Keyword research via tools like Ahrefs, SEMrush, Moz — finding search volume for specific terms</div>
+        <div class="compare-item"><div class="dot dot-red"></div>On-page optimisation: H1, title tags, meta descriptions, internal links, image alt text</div>
+        <div class="compare-item"><div class="dot dot-red"></div>Link building: guest posts, digital PR, HARO, broken link reclamation</div>
+        <div class="compare-item"><div class="dot dot-red"></div>Technical SEO: page speed, crawl budget, canonicals, structured data, mobile-first</div>
+        <div class="compare-item"><div class="dot dot-red"></div>Core Web Vitals: LCP under 2.5s, FID under 100ms, CLS under 0.1</div>
+        <div class="compare-item"><div class="dot dot-red"></div>Success metric: keyword ranking position + organic click-through rate</div>
+        <div class="compare-item"><div class="dot dot-red"></div>Reporting: monthly rank tracking, traffic growth, conversion attribution</div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-col-label label-post">What Was Already Changing · 2019–2022</div>
+        <div class="compare-item"><div class="dot dot-blue"></div>Featured snippets and knowledge panels appearing above organic results — position zero</div>
+        <div class="compare-item"><div class="dot dot-blue"></div>Voice search requiring full-sentence natural language answers, not keyword-stuffed copy</div>
+        <div class="compare-item"><div class="dot dot-blue"></div>People Also Ask boxes fragmenting search intent across dozens of sub-queries</div>
+        <div class="compare-item"><div class="dot dot-blue"></div>Zero-click searches already reaching 49% of Google queries by 2019 (SparkToro)</div>
+        <div class="compare-item"><div class="dot dot-blue"></div>E-A-T expanding into E-E-A-T — adding "Experience" to the quality signals</div>
+        <div class="compare-item"><div class="dot dot-blue"></div>MUM (Multitask Unified Model, 2021) — AI understanding images, video, and text simultaneously</div>
+        <div class="compare-item"><div class="dot dot-blue"></div>First hints that the ranking model was shifting from match to meaning</div>
+      </div>
+    </div>
+
+    <p class="reveal">The truth professionals in the industry were quietly acknowledging by 2021: SEO had become extraordinarily complex, the return on investment was compressing, and something fundamentally different was on the horizon. They were right. They just had no idea how different.</p>
+
+    <div class="pullquote reveal">
+      "By 2022, a comprehensive SEO audit of a mid-size e-commerce site required 40+ hours of skilled technical work across six different platforms — and the checklist kept getting longer, not shorter."
+      <cite>— Technical SEO industry baseline, pre-AI era</cite>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <h2 id="era-three">Part III: The <em>Rupture</em> — When AI Broke the Old Playbook</h2>
+
+    <h4>2023 — Present · The AI Inflection Point</h4>
+
+    <p class="reveal">On May 10, 2023, Google announced AI Overviews (then called Search Generative Experience) at Google I/O. The audience applauded politely. Most SEOs noted it with mild concern. Within eighteen months, it would rewrite every fundamental assumption the industry had built over two decades.</p>
+
+    <p class="reveal">Here is what AI Overviews actually did: they placed an AI-generated answer — synthesised from multiple sources, presented in paragraph form, directly answering the query — at the very top of the search results page. Below it, sometimes, were the ten blue links. Increasingly, users read the AI answer and left. <strong class="highlight">Position #1 organic results now see a 34.5% lower click-through rate when an AI Overview is present.</strong> The thing SEOs had spent careers trying to achieve — the #1 ranking — had become worth less than it ever had been.</p>
+
+    <div class="stat-grid reveal">
+      <div class="stat-cell">
+        <div class="stat-cell-num c-red">65%</div>
+        <div class="stat-cell-label">Google searches end with zero clicks to any website</div>
+        <div class="stat-cell-source">Digitaloft · 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num c-blue">−34.5%</div>
+        <div class="stat-cell-label">CTR loss for #1 ranking when AI Overview displayed</div>
+        <div class="stat-cell-source">Digitaloft · 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num c-green">527%</div>
+        <div class="stat-cell-label">Growth in AI-referred web sessions, Jan–May 2025</div>
+        <div class="stat-cell-source">Previsible AI Traffic Report · 2025</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num c-gold">10×</div>
+        <div class="stat-cell-label">Increase in AI-driven referral traffic, Jul 2024–Feb 2025</div>
+        <div class="stat-cell-source">Adobe Research · 2025</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num c-red">49%</div>
+        <div class="stat-cell-label">Users still click traditional links after AI answer</div>
+        <div class="stat-cell-source">Digitaloft survey · 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num c-blue">87.4%</div>
+        <div class="stat-cell-label">Of all AI referral traffic comes from ChatGPT alone</div>
+        <div class="stat-cell-source">Conductor · Nov 2025</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num c-green">76.1%</div>
+        <div class="stat-cell-label">URLs in AI Overviews also rank in Google top 10</div>
+        <div class="stat-cell-source">SE Ranking · 2025</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num c-gold">325%</div>
+        <div class="stat-cell-label">More AI citations for content distributed across multiple publications vs own site only</div>
+        <div class="stat-cell-source">Stacker · Dec 2025</div>
+      </div>
+    </div>
+
+    <h3 class="reveal">The Three Platforms That Changed Everything</h3>
+
+    <p class="reveal"><strong class="highlight">Google AI Overviews</strong> synthesise answers from the web in real time, linking to 13.3 sources on average. They appear on approximately 40% of all queries. For informational queries — the content SEOs have spent years optimising for — the rate is even higher. The content is consumed. The click often never happens.</p>
+
+    <p class="reveal"><em class="blue">ChatGPT Search</em> launched in late 2024 and by early 2025, mobile downloads had grown by nearly 20 million in a single month. It draws from a wider range of sources than Google's AI Overviews — citing lower-ranking and even non-ranking pages if they provide contextually relevant information. This is a profound shift: you can be cited in ChatGPT without ranking anywhere in Google.</p>
+
+    <p class="reveal"><em class="green">Perplexity AI</em> has become the research tool of choice for high-intent professional queries. Its AI-referred visitors browse 12% more pages per visit and show a 23% lower bounce rate than non-AI referrals (Adobe Research, 2025). These are not passive browsers. They are high-intent decision-makers who trust Perplexity's citations enough to engage deeply.</p>
+
+    <div class="note-box reveal">
+      <strong>The Uncomfortable Truth About Zero-Click:</strong> When users get their answer from an AI Overview without clicking, your brand has still been referenced. Your data and your authority have been consumed and attributed. The question for 2026 is not "how do I get the click?" — it is "how do I become the source the AI cites, so my brand is the name users associate with the answer?"
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <h2 id="agentic">Part IV: The <em>Agentic Revolution</em> — The Third Paradigm</h2>
+
+    <h4>2025 — 2026 · When AI Doesn't Just Answer — It Acts</h4>
+
+    <p class="reveal">Generative AI search was disruptive. Agentic AI is transformational. The distinction is critical and most of the marketing industry has not yet grasped it.</p>
+
+    <p class="reveal">Generative search answers questions. Agentic AI <em>takes actions.</em> Google's AI Mode does not just summarise ticket availability — it compares offers, identifies the best seat, and initiates the purchase flow through integrations with Ticketmaster and StubHub. Perplexity's shopping agent does not just describe products — it adds them to carts. OpenAI's Operator does not just find restaurants — it makes reservations.</p>
+
+    <p class="reveal"><strong class="highlight">AI agents now account for approximately 33% of organic search activity</strong> according to BrightEdge's 2026 internal tracking. Gartner predicts that by 2028, 90% of B2B buying will be AI-agent-intermediated, pushing over $15 trillion through AI-agent exchanges. The agent does not read your blog post and recommend it to its human. The agent crawls your product data, compares it against competitors, and either includes you in a purchase recommendation or does not — all before the human ever visits your site.</p>
+
+    <div class="data-callout reveal">
+      <div class="stat-big">$200B</div>
+      <div class="stat-text">The estimated size of the agentic commerce market by 2030. Brands that aren't optimising for AI agent discovery today are building their business on infrastructure that an autonomous agent will simply skip.</div>
+      <div class="stat-source">Industry Analysis · 2026 estimate</div>
+    </div>
+
+    <h3 class="reveal">What Agentic AI Needs From Your Website That Traditional SEO Never Did</h3>
+
+    <p class="reveal">Traditional SEO asked: can Google's crawler read this page? Agentic SEO asks something fundamentally different: can an autonomous AI agent extract the precise information it needs to make a decision on behalf of a human user — accurately, reliably, in milliseconds, without ambiguity?</p>
+
+    <table class="framework-table reveal">
+      <thead>
+        <tr>
+          <th>SEO Factor</th>
+          <th>Traditional Requirement</th>
+          <th>Agentic AI Requirement</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Crawl Access</strong></td>
+          <td>Allow Googlebot. Block harmful scrapers.</td>
+          <td>Manage 13+ distinct AI crawlers individually: GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended, Bytespider, anthropic-ai — each with explicit robots.txt policy.</td>
+          <td><span class="pill pill-evolved">Evolved</span></td>
+        </tr>
+        <tr>
+          <td><strong>Structured Data</strong></td>
+          <td>Schema markup for rich results. FAQPage, Article, Product.</td>
+          <td>Machine-readable structured facts that AI can extract and synthesise. FAQPage schema is now the highest GEO-value markup. JSON-LD for every entity claim.</td>
+          <td><span class="pill pill-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>Content Format</strong></td>
+          <td>Long-form, keyword-rich, readable prose.</td>
+          <td>Answer-first format. Direct definitions. Attributed statistics. Claim-evidence-source structure. Passage-level citability — each paragraph must stand alone as an extractable answer.</td>
+          <td><span class="pill pill-new">New Discipline</span></td>
+        </tr>
+        <tr>
+          <td><strong>Authority Signals</strong></td>
+          <td>Domain authority via backlink profile.</td>
+          <td>Entity consistency across the entire web. Earned media distribution. YouTube mentions. Branded citations. Research publication. Data that gets cited BY other sources.</td>
+          <td><span class="pill pill-evolved">Evolved</span></td>
+        </tr>
+        <tr>
+          <td><strong>Technical Files</strong></td>
+          <td>robots.txt, sitemap.xml, canonical tags.</td>
+          <td>llms.txt — a new file standard declaring what content AI may use, how, and for what purpose. AGENTS.md for agentic interaction instructions. Content Signals protocol (Cloudflare-backed standard, 2025).</td>
+          <td><span class="pill pill-new">New Discipline</span></td>
+        </tr>
+        <tr>
+          <td><strong>JavaScript Rendering</strong></td>
+          <td>Ensure Googlebot can render JS. Use SSR for critical content.</td>
+          <td>Fetch URLs as GPTBot, PerplexityBot, OAI-SearchBot user agents and confirm content parity. AI agents may not render JavaScript at all. All critical information must exist in plain HTML.</td>
+          <td><span class="pill pill-critical">Critical</span></td>
+        </tr>
+        <tr>
+          <td><strong>Success Metric</strong></td>
+          <td>Keyword ranking position. Organic click-through rate.</td>
+          <td>Citation frequency in AI answers. Brand mention velocity. AI-referred session quality. Agentic conversion events (purchases, bookings made by agents on behalf of users).</td>
+          <td><span class="pill pill-new">New Discipline</span></td>
+        </tr>
+        <tr>
+          <td><strong>Core Web Vitals</strong></td>
+          <td>LCP &lt;2.5s, FID &lt;100ms, CLS &lt;0.1</td>
+          <td>LCP &lt;2.5s, <strong>INP &lt;200ms</strong> (FID replaced), CLS &lt;0.1. TTFB &lt;800ms. Pages returning non-200 status codes now excluded from Google's rendering queue entirely (Dec 2025 update).</td>
+          <td><span class="pill pill-evolved">Evolved</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <h2 id="audit">Part V: The <em>New SEO Audit</em> — What 2026 Actually Looks Like</h2>
+
+    <h4>Two Audits, One Reality</h4>
+
+    <p class="reveal">Here is the central practical challenge of 2026 SEO: you need to run two audits simultaneously. The first is the traditional technical audit — still essential, still comprehensive, still a 200-item checklist. The second is the agentic readiness audit — entirely new, measuring signals that didn't exist three years ago, requiring new tools, new mental models, and new success metrics.</p>
+
+    <p class="reveal">Most organisations are running the first and ignoring the second. That gap is where competitive advantage is being built right now.</p>
+
+    <div class="audit-section reveal">
+      <div class="audit-header">
+        <div class="audit-header-title">⬛ Traditional Technical SEO Audit — Still Required, Now Table Stakes</div>
+        <div class="audit-header-era">Era 1 baseline · 2026 minimum</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-was">Crawl</span>Full site crawl (Screaming Frog / Sitebulb) — broken links, redirect chains, 4xx/5xx errors, orphan pages, crawl depth analysis</div>
+        <div class="audit-cell"><span class="tag tag-now">2026 Update</span>Log file analysis now mandatory — verify which URLs Googlebot actually crawled vs what sitemap claims. Pages with non-200 status codes excluded from rendering queue (Google, Dec 2025)</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-was">Performance</span>Core Web Vitals: LCP, FID, CLS measured via CrUX field data, not just Lighthouse lab data</div>
+        <div class="audit-cell"><span class="tag tag-now">2026 Update</span>FID replaced by INP (Interaction to Next Paint) — must be under 200ms. Significantly more complex to diagnose. Requires real user monitoring across all interactions, not just first input.</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-was">Content</span>Thin content detection, duplicate content analysis, keyword cannibalisation, content gap analysis vs competitors</div>
+        <div class="audit-cell"><span class="tag tag-now">2026 Update</span>E-E-A-T evaluation per September 2025 Quality Rater Guidelines. Experience signals (first-hand expertise, author credentials, publication history) now explicitly weighted in content quality assessment.</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-was">Schema</span>Validate structured data across all page templates. Check for errors in Google's Rich Results Test.</div>
+        <div class="audit-cell"><span class="tag tag-now">2026 Update</span>Schema drives AI Overviews: FAQ markup is how AI search engines like Google AI Mode and Perplexity choose what to cite. HowTo and FAQPage schemas had search feature eligibility restricted in Aug–Sep 2023 but remain critical for AI citation.</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-was">Links</span>Backlink profile analysis: toxic links, anchor text distribution, referring domain diversity, competitor link gap</div>
+        <div class="audit-cell"><span class="tag tag-now">2026 Update</span>Earned media distribution matters more than raw backlink count for AI citation. Content distributed across multiple authoritative publications sees up to 325% more AI citations than content published only on your own domain.</div>
+      </div>
+    </div>
+
+    <div class="audit-section reveal" style="margin-top:24px;">
+      <div class="audit-header" style="background: var(--accent2);">
+        <div class="audit-header-title">🤖 Agentic AI Readiness Audit — The New Competitive Frontier</div>
+        <div class="audit-header-era">Era 3 discipline · Did not exist 2 years ago</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-now">Bot Governance</span><strong>AI Crawler Policy</strong> — Audit your robots.txt against the 2026 AI bot list. 13+ crawlers require explicit individual policies.</div>
+        <div class="audit-cell" style="font-size:13px; color:var(--muted);">
+          Allow: OAI-SearchBot (ChatGPT search visibility)<br>
+          Strategic: Google-Extended (Gemini answers vs. model training tradeoff)<br>
+          Block: GPTBot (OpenAI training scraper — does NOT affect search visibility)<br>
+          Wildcards block too much or too little. Each needs an explicit policy.
+        </div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-now">New Files</span><strong>llms.txt + AGENTS.md</strong> — Declare how your content may be used by AI systems. New 2025 standard backed by Cloudflare. Gives legal grounding to enforce AI content usage policy.</div>
+        <div class="audit-cell" style="font-size:13px; color:var(--muted);">Akin to robots.txt but for language model access. Declares: what content AI may index, what it may use for training, what it may use for retrieval/citation, and what actions agents may take on your site on behalf of users.</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-now">AI Rendering</span><strong>Multi-Agent Fetch Test</strong> — Fetch your key URLs as GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot. Confirm content parity with what Googlebot sees.</div>
+        <div class="audit-cell" style="font-size:13px; color:var(--muted);">AI agents may not render JavaScript at all. If your pricing, product specifications, or key facts are in client-side JS, AI agents cannot see them — and will either skip your page or hallucinate the information. Critical failure mode for e-commerce.</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-now">GEO Visibility</span><strong>Citation Tracking</strong> — Query your target questions in ChatGPT, Perplexity, Google AI Mode, Bing Copilot. Document whether your brand is cited, how it is described, and what content is referenced.</div>
+        <div class="audit-cell" style="font-size:13px; color:var(--muted);">No single tool currently tracks GEO performance across all platforms. Manual citation checking is still the most reliable method. Set up monthly cadence: 20 target queries across 4 AI platforms = 80 data points per cycle. Track citation rate, position in answer, description accuracy.</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-now">Content Structure</span><strong>Passage-Level Citability</strong> — Can each paragraph in your key content stand alone as a complete, accurate, attributed answer? Does your content follow the claim-evidence-source structure AI systems prefer?</div>
+        <div class="audit-cell" style="font-size:13px; color:var(--muted);">AI systems don't cite pages — they cite passages. Each factual claim needs: 1) a clear assertion, 2) supporting evidence or data, 3) visible source attribution. Articles structured this way see dramatically higher citation rates in AI-generated answers than prose-only content.</div>
+      </div>
+      <div class="audit-row">
+        <div class="audit-cell"><span class="tag tag-now">Entity Consistency</span><strong>Brand Entity Audit</strong> — Is your brand name, description, address, phone, and factual information perfectly consistent across your website, Wikipedia, LinkedIn, Google Business Profile, industry directories, and social profiles?</div>
+        <div class="audit-cell" style="font-size:13px; color:var(--muted);">One mismatched address or conflicting brand description across directories creates sufficient ambiguity for an AI system to skip your brand entirely rather than risk citing incorrect information. Entity consistency is the foundation of AI visibility.</div>
+      </div>
+    </div>
+
+    <h3 class="reveal">The Agentic Audit in Practice — What 9 AI Agents Do in 2026 That 1 Analyst Did in 2022</h3>
+
+    <p class="reveal">The audit process itself has been transformed by AI. <strong class="highlight">In 2022, a comprehensive technical SEO audit required six tools, six data exports, and one overworked SEO analyst to synthesise them by hand.</strong> Today, agentic SEO audit systems can type a single command and deploy 9 parallel AI agents that simultaneously analyse: crawlability, indexability, Core Web Vitals, structured data, E-E-A-T signals, GEO readiness, backlink profile, local SEO, and competitor comparison — producing a 0-to-100 health score with a prioritised fix list ranked by impact.</p>
+
+    <p class="reveal">Platforms like Silverbee and the open-source Claude SEO toolkit now integrate Google Search Console, Core Web Vitals, Ahrefs, site crawling, and scraping into a single agentic task. The audit isn't dead. The audit <em>process</em> — the six-tab nightmare, the manual cross-referencing, the 50-page PDF nobody reads — is dead.</p>
+
+    <div class="pullquote reveal">
+      "In 2026, technical SEO is no longer a consulting task. It is a deployment task. The loop between auditing and fixing closes in minutes rather than months."
+      <cite>— Stormy.ai · Automated Technical SEO Guide 2026</cite>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <h2>Part VI: The <em>Strategic Framework</em> — What Wins in 2026</h2>
+
+    <p class="reveal">The organisations winning in 2026 search aren't choosing between traditional SEO and GEO. They're running both simultaneously — as parallel, non-negotiable infrastructure. Here is the framework that separates the winners from the teams still defending flat organic traffic numbers to their boards.</p>
+
+    <h4>The 2026 Three-Programme Model</h4>
+
+    <p class="reveal">Winning enterprise search in 2026 requires three concurrent programmes running in parallel. Skip any one of them and you cede market share to competitors who run all three:</p>
+
+    <table class="framework-table reveal">
+      <thead>
+        <tr><th>Programme</th><th>Core Activities</th><th>New in 2026</th><th>Measurement</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Programme 1</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--accent);">CLASSICAL SEO</span></td>
+          <td>Core Web Vitals (INP), crawl budget optimisation, schema automation, hreflang for international, internal linking architecture, E-E-A-T signals</td>
+          <td>Continuous automated audits replacing quarterly manual ones. AI agents running schema validation and performance monitoring on deployment pipelines.</td>
+          <td>Keyword rankings, organic traffic, CTR, conversion rate from organic sessions</td>
+        </tr>
+        <tr>
+          <td><strong>Programme 2</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--accent2);">AI VISIBILITY (GEO)</span></td>
+          <td>Citation tracking across 6+ AI engines, content restructuring for passage citability, entity consistency audit, llms.txt implementation, earned media distribution</td>
+          <td>Monthly citation rate tracking. Brand mention monitoring in AI responses. Structured content investment (research reports, original data) to become a citation magnet.</td>
+          <td>Citation frequency, citation accuracy, brand description in AI answers, AI-referred session volume and engagement quality</td>
+        </tr>
+        <tr>
+          <td><strong>Programme 3</strong><br><span style="font-family:var(--mono);font-size:10px;color:var(--accent3);">AGENTIC COMMERCE</span></td>
+          <td>Bot governance (13+ AI crawler policies), JS rendering parity for agents, structured product/service data for agent consumption, agentic UX testing</td>
+          <td>llms.txt + AGENTS.md file implementation. Agent Experience Layer (AXP) serving machine-readable versions to AI crawlers. Testing purchase/booking flows via AI agents.</td>
+          <td>Agent-initiated conversions, AI shopping cart additions, agentic booking completions, structured data completeness score</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- CONCLUSION -->
+    <div class="conclusion-box reveal">
+      <h2>The <em>Negotiation</em> Never Stops</h2>
+      <p>In 1998, the negotiation was between your keyword density and an algorithm that counted words. In 2012, it was between your domain authority and an algorithm that counted credible links. In 2019, it was between your content quality and an algorithm that read sentences.</p>
+      <p style="margin-top:16px;">In 2026, the negotiation is between your content's citability — its factual clarity, its structural precision, its entity consistency, its distributed authority — and an AI system deciding in milliseconds whether your brand deserves to be the answer a user never clicks but always remembers.</p>
+      <p style="margin-top:16px;"><strong style="color:var(--paper);">The organisations that win this negotiation won't be the ones with the most keywords or the most backlinks. They'll be the ones whose content the AI trusts enough to cite without question.</strong></p>
+
+      <div class="framework-list">
+        <div class="fw-item">
+          <div class="fw-item-title">Immediate Action 1</div>
+          <div class="fw-item-text">Audit your robots.txt against all 13 AI crawlers. Explicitly allow OAI-SearchBot. Make a strategic decision on Google-Extended.</div>
+        </div>
+        <div class="fw-item">
+          <div class="fw-item-title">Immediate Action 2</div>
+          <div class="fw-item-text">Implement llms.txt and FAQPage schema across your highest-value content pages. These are the two highest-impact GEO actions with lowest implementation cost.</div>
+        </div>
+        <div class="fw-item">
+          <div class="fw-item-title">Immediate Action 3</div>
+          <div class="fw-item-text">Run a citation audit: query your 20 most important keywords in ChatGPT, Perplexity, and Google AI Mode. Document where you appear, how you're described, and who's being cited instead of you.</div>
+        </div>
+        <div class="fw-item">
+          <div class="fw-item-title">Immediate Action 4</div>
+          <div class="fw-item-text">Restructure your 5 highest-traffic pages into claim-evidence-source format. Test them with PerplexityBot. Citation rates compound over time — start now.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box reveal">
+      <div class="author-avatar">RV</div>
+      <div>
+        <div class="author-name">Ramakrishnan Varadaraj</div>
+        <div class="author-title">AI-Driven Growth Strategist · Retail Media Expert · Agentic AI Builder</div>
+        <div class="author-bio">13+ years leading digital advertising operations at MediaMint, managing $MM+ campaign portfolios for Fortune 500 brands. Pioneer in AI-assisted reporting automation, Agentic AI workflow adoption, and BI dashboard development. Led teams of 50 across retail media, programmatic, and social — with global training delivered on 3 continents. Currently open to consulting for brands and agencies ready to build AI-powered growth infrastructure.</div>
+      </div>
+    </div>
+
+    <hr class="section-rule">
+    <p style="font-size:13px; color:var(--muted); font-family:var(--mono); line-height:1.7;">
+      <strong>Sources & Data Attribution:</strong> SE Ranking (Aug 2025) · Previsible AI Traffic Report (2025) · Adobe Research (Feb 2025) · Digitaloft AI in SEO Statistics (2026) · BrightEdge Internal Tracking (2026) · Semrush 2025 Website Health Benchmark · Gartner Strategic Predictions (2026) · ALM Corp GEO Guide (Feb 2026) · Stormy.ai Automated SEO Guide (Mar 2026) · NAV43 Agentic AI Workflows (May 2026) · Digital Applied Technical SEO Audit Checklist (2026) · Scopicstudios Technical SEO Checklist (Mar 2026) · SparkToro Search Volume Analysis (2025) · Stacker Earned Media Distribution Study (Dec 2025) · McKinsey AI Search Front Door Report (2025) · Conductor AI Referral Traffic Report (Nov 2025) · WordLift Agentic AI Audit Framework (2025)
+    </p>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-toc">
+      <div class="sidebar-toc-title">Contents</div>
+      <div class="toc-item"><span class="toc-num">I</span><a href="#era-one">The Archaeology of Search · 1991–2011</a></div>
+      <div class="toc-item"><span class="toc-num">II</span><a href="#era-two">The Sophistication Era · 2012–2022</a></div>
+      <div class="toc-item"><span class="toc-num">III</span><a href="#era-three">The AI Rupture · 2023–Present</a></div>
+      <div class="toc-item"><span class="toc-num">IV</span><a href="#agentic">The Agentic Revolution · 2025–2026</a></div>
+      <div class="toc-item"><span class="toc-num">V</span><a href="#audit">The New SEO Audit</a></div>
+      <div class="toc-item"><span class="toc-num">VI</span>The 2026 Strategic Framework</div>
+    </div>
+
+    <div class="sidebar-fact">
+      <div class="sidebar-fact-label">Stat to remember</div>
+      <div class="sidebar-fact-text">"Distributing content across multiple publications increases AI citations by up to 325% compared to publishing only on your own site."</div>
+      <div class="sidebar-fact-source">Stacker Research · December 2025</div>
+    </div>
+
+    <div class="sidebar-fact" style="background:var(--accent2); margin-bottom:20px;">
+      <div class="sidebar-fact-label" style="color:rgba(245,242,236,.6);">New in 2026</div>
+      <div class="sidebar-fact-text">"AI agents now account for ~33% of organic search activity. You are optimising for a user that never visits your site."</div>
+      <div class="sidebar-fact-source">BrightEdge Internal · 2026</div>
+    </div>
+
+    <div class="sidebar-glossary">
+      <div class="glossary-title">2026 Glossary</div>
+      <dl>
+        <div class="glossary-term"><dt>GEO</dt><dd>Generative Engine Optimization — structuring content for AI system citation. Also called AEO, LLMO, GAIO.</dd></div>
+        <div class="glossary-term"><dt>AEO</dt><dd>Answer Engine Optimization — making content citable in AI assistant responses (ChatGPT, Gemini, Perplexity).</dd></div>
+        <div class="glossary-term"><dt>INP</dt><dd>Interaction to Next Paint — replaced FID as Core Web Vital in 2024. Must be under 200ms. Measures all interactions, not just first.</dd></div>
+        <div class="glossary-term"><dt>llms.txt</dt><dd>New 2025 file standard declaring AI content usage permissions. Backed by Cloudflare.</dd></div>
+        <div class="glossary-term"><dt>Agentic Traffic</dt><dd>Web visits made by autonomous AI agents acting on behalf of human users — often invisible to GA4.</dd></div>
+        <div class="glossary-term"><dt>E-E-A-T</dt><dd>Experience, Expertise, Authority, Trust — Google's content quality framework updated Sep 2025.</dd></div>
+        <div class="glossary-term"><dt>Zero-click</dt><dd>Search queries resolved on the SERP itself without any click to an external website. Now 65% of all Google searches.</dd></div>
+      </dl>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span><strong>Ramakrishnan Varadaraj</strong> · AI-Driven Growth Strategist</span>
+  <span>Published May 2026 · Chennai, India</span>
+  <span>Original Research + Synthesis · Not AI-Generated Filler</span>
+</footer>
+
+<script>
+// Reading progress bar
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop || document.body.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  const pct = total > 0 ? (scrolled / total) * 100 : 0;
+  document.getElementById('read-progress').style.width = pct + '%';
+});
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Timeline step reveals with stagger
+const tlObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const items = e.target.querySelectorAll('.timeline-item');
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 120);
+      });
+      tlObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.05 });
+
+document.querySelectorAll('.timeline').forEach(tl => tlObserver.observe(tl));
+
+// Active TOC highlighting
+const sections = document.querySelectorAll('h2[id]');
+const tocLinks = document.querySelectorAll('.toc-item a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  tocLinks.forEach(a => {
+    const parent = a.parentElement;
+    parent.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--accent)' : '';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
